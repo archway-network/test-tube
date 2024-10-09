@@ -218,8 +218,7 @@ impl RawResult {
         } else {
             let content_string = CString::new(content)
                 .unwrap()
-                .to_str()
-                .expect("Go code must encode valid UTF-8 string")
+                .to_string_lossy()
                 .to_string();
 
             let error = match code {
